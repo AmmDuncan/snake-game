@@ -4,7 +4,7 @@ import { newBoard } from "./utils";
 
 let inter;
 let THRESHOLD = 300;
-let TIMEOUT = 400;
+let TIMEOUT = 550;
 let MULTIPLIER = 40;
 
 class GameBoard {
