@@ -9,12 +9,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  min-height: 95vh;
+  min-height: 97vh;
   background: #5222d0;
   font-family: sans-serif;
   font-size: 1.6rem;
   color: white;
   text-align: center;
+  padding: 0.5rem;
 }
 
 h1 {
@@ -62,6 +63,63 @@ main .display {
   box-shadow: 0 0.2rem 0.5rem inset #300c8968;
 }
 
+.controls {
+  width: max-content;
+  height: max-content;
+  display: grid;
+  grid: repeat(3, max-content) / repeat(3, max-content);
+  justify-content: center;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.controls.hide {
+  display: none;
+}
+
+.controls button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  border: none;
+  border-radius: 0.8rem;
+  align-items: center;
+  width: 7.2rem;
+  height: 7.2rem;
+  opacity: 0.2;
+  cursor: pointer;
+}
+
+.controls button:hover,
+.controls button:active {
+  opacity: 0.4;
+}
+
+.controls svg {
+  max-width: 2rem;
+}
+
+[data-dir="up"] {
+  grid-area: 1/2;
+  transform: rotateZ(180deg)
+}
+
+[data-dir="right"] {
+  grid-area: 2/-2;
+  transform: rotateZ(270deg)
+}
+
+[data-dir="left"] {
+  grid-area: 2/1;
+  transform: rotateZ(90deg)
+}
+
+[data-dir="down"] {
+  grid-area: 3/2;
+}
+
 .closing {
   margin-top: 2rem;
   font-size: 2.4rem;
@@ -76,6 +134,11 @@ main .display {
 
 * {
   box-sizing: border-box;
+  user-select: none;
+}
+
+* {
+  touch-action: manipulation;
 }
 
 .container {
@@ -139,4 +202,27 @@ main .display {
   left: 50%;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+}
+
+.ctas {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: grid;
+  grid: auto-flow 1fr / 1fr;
+  gap: 1rem;
+}
+
+.ctas button {
+  height: 4rem;
+  padding: 0.4rem 1.6rem;
+  border-radius: 0.4rem;
+  border: none;
+  background: #6f3eeb;
+  color: #fff;
+  opacity: 0.45;
+}
+
+.ctas button:hover {
+  opacity: 0.8;
 }

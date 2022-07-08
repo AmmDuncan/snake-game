@@ -63,7 +63,6 @@ class Snake {
       // console.log({ level: state.level, total: state.levels.length });
       if (state.level + 1 < state.levels.length) {
         state.changeLevel(state.level + 1);
-        gameBoard.setup(true);
         gameBoard.start();
       } else {
         gameBoard.clear();

@@ -3,9 +3,9 @@ import snake from "./snake";
 import { newBoard } from "./utils";
 
 let inter;
-let THRESHOLD = 300;
-let TIMEOUT = 550;
-let MULTIPLIER = 40;
+let THRESHOLD = 250;
+let TIMEOUT = 500;
+let MULTIPLIER = 50;
 
 class GameBoard {
   travel = {
@@ -23,19 +23,10 @@ class GameBoard {
 
   setup(copyContent = false) {
     const { rows, columns } = state;
-    if (!copyContent) {
-      this.board = newBoard(rows, columns);
-      this.board[0][0] = 1;
-    } else {
-      const board = newBoard(rows, columns);
-      const bal = Math.round((rows - this.board.length) / 2);
-      for (let x = 0; x < this.board.length; x++) {
-        for (let y = 0; y < this.board[0].length; y++) {
-          board[x + bal][y + bal] = this.board[x][y];
-        }
-      }
-      this.board = board;
-    }
+    // if (!copyContent) {
+    this.board = newBoard(rows, columns);
+    this.board[0][0] = 1;
+    // }
 
     let html = "";
     for (let i = 0; i < rows * columns; i++) {
@@ -175,3 +166,35 @@ class GameBoard {
 const gameBoard = new GameBoard();
 
 export default gameBoard;
+
+// } else {
+//   const board = newBoard(rows, columns);
+//   const bal = Math.round((rows - this.board.length) / 2);
+//   const boardRows = this.board.length;
+//   const boardColumns = this.board[0].length;
+//   for (let x = 0; x < boardRows; x++) {
+//     for (let y = 0; y < boardColumns; y++) {
+//       let val = this.board[x][y];
+//       const onEdge =
+//         x === 0 || x === boardRows || y === 0 || y === boardColumns;
+//       if (val !== 0 && onEdge) {
+//         const { row, col } = this.getNextTile({ x, val, val });
+//         const { row: bRow, col: bCol } = this.getNextTile({
+//           x,
+//           y,
+//           val,
+//           reverse: true,
+//         });
+
+//         const frontVal = this.board[row][col];
+//         const backVal = this.board[bRow][bCol];
+
+//         if (frontVal || backVal) {
+
+//         }
+//       }
+//       board[x + bal][y + bal] = this.board[x][y];
+//     }
+//   }
+//   this.board = board;
+// }
