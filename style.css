@@ -1,0 +1,142 @@
+html {
+  font-size: 10px;
+  ;
+}
+
+body {
+  font-family: Avenir, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  min-height: 95vh;
+  background: #5222d0;
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+header {
+  height: 7.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: #602ede;
+  box-shadow: 0 1rem 2rem #4018a744,
+    0 1px 2px inset rgba(255, 255, 255, 0.1);
+}
+
+main {
+  margin-block: 4.8rem;
+  display: grid;
+  place-content: center;
+  grid: auto-flow max-content / 1fr;
+}
+
+main .display {
+  margin-bottom: 1.6rem;
+  display: grid;
+  grid: 1fr / auto-flow max-content;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.display>* {
+  width: max-content;
+  height: 4rem;
+  display: grid;
+  grid: 1fr / auto-flow max-content;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1.4rem 0.8rem;
+  border-radius: 0.4rem;
+  background: #3f18a3;
+  line-height: 1;
+  box-shadow: 0 0.2rem 0.5rem inset #300c8968;
+}
+
+.closing {
+  margin-top: 2rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.level-value,
+.target-value {
+  font-weight: 700;
+  font-family: monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  max-width: 40rem;
+  width: 95%;
+  margin-inline: auto;
+  padding-top: min(100%, 40rem);
+}
+
+.board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  display: grid;
+  grid: repeat(5, 1fr) / repeat(5, 1fr);
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.235);
+}
+
+.box.active {
+  border-radius: 2px;
+  background: #ad95eb;
+  box-shadow: 0 0.25rem 0.25rem #4018a744,
+    0 0.45rem 0.5rem -0.2rem inset rgba(255, 255, 255, 0.4);
+}
+
+.box.bite,
+.box.bite.active {
+  animation: breath 0.5s ease infinite;
+}
+
+@keyframes breath {
+  0% {
+    background: #f44;
+  }
+
+  100% {
+    background: #fff;
+  }
+}
+
+/* .box.food {
+  border: 1px solid #f00;
+} */
+
+.box.food::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: crimson;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
