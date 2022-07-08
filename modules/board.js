@@ -21,12 +21,16 @@ class GameBoard {
     this.lastColumn = 0;
   }
 
-  setup(copyContent = false) {
+  setup(clearOver = false) {
     const { rows, columns } = state;
     // if (!copyContent) {
     this.board = newBoard(rows, columns);
     this.board[0][0] = 1;
     // }
+
+    if (clearOver) {
+      this.gameOverContainer.innerHTML = "";
+    }
 
     let html = "";
     for (let i = 0; i < rows * columns; i++) {
@@ -40,6 +44,9 @@ class GameBoard {
 
   get boxArray() {
     return Array.from(this.domBoxes);
+  }
+  get gameOverContainer() {
+    return document.querySelector(".game-over");
   }
 
   clear() {
@@ -118,7 +125,7 @@ class GameBoard {
     state.gameOver = true;
     clearInterval(inter);
     this.boxArray[y * state.rows + x].classList.add("bite");
-    document.body.append("GAME OVER");
+    this.gameOverContainer.innerHTML = "GAME OVER 😞";
   }
 
   setNewFoodLocation(boardInstance) {

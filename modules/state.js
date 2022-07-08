@@ -18,8 +18,8 @@ class GameState {
   }
 
   reset() {
-    changeLevel(0);
-    this.gameOver(0);
+    this.changeLevel(0);
+    this.gameOver = false;
   }
 
   levels = [

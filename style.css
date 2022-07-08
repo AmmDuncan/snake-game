@@ -226,3 +226,7 @@ main .display {
 .ctas button:hover {
   opacity: 0.8;
 }
+
+.game-over {
+  margin-block: 1.6rem;
+}

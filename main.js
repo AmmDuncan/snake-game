@@ -1,6 +1,7 @@
 import "./style.css";
 import gameBoard from "./modules/board";
 import snake from "./modules/snake";
+import state from "./modules/state";
 
 gameBoard.setup();
 gameBoard.setNewFoodLocation(gameBoard.board);
@@ -57,7 +58,8 @@ document
 document.querySelector(".ctas .restart").addEventListener("click", (e) => {
   gameBoard.clearInterval();
   snake.reset();
-  gameBoard.setup();
+  state.reset();
+  gameBoard.setup(true);
   gameBoard.setNewFoodLocation(gameBoard.board);
   gameBoard.render();
   gameBoard.start();
