@@ -4,7 +4,7 @@ import { newBoard } from "./utils";
 
 let inter;
 let THRESHOLD = 250;
-let TIMEOUT = 500;
+let TIMEOUT = 350;
 let MULTIPLIER = 50;
 
 class GameBoard {
@@ -76,6 +76,7 @@ class GameBoard {
 
     this.renderLevel();
     this.renderTarget();
+    this.renderRestart();
   }
 
   renderLevel() {
@@ -87,6 +88,11 @@ class GameBoard {
     const { target } = state;
     const { length } = snake;
     document.querySelector(".target-value").innerHTML = `${length}/${target}`;
+  }
+
+  renderRestart() {
+    const restartBtn = document.querySelector(".ctas .restart");
+    restartBtn.style.display = state.gameOver ? "block" : "none";
   }
 
   getNextTile({ x, y, val, reverse = false }) {
@@ -118,6 +124,7 @@ class GameBoard {
       this.board[x][y] = "bite";
       this.board[row][col] = nextContent;
       this.gameOver({ x, y });
+      this.renderRestart();
     }
   }
 
@@ -147,7 +154,7 @@ class GameBoard {
   start() {
     clearInterval(inter);
     const time = TIMEOUT - state.level * MULTIPLIER;
-    inter = setInterval(() => this.exec(), time < THRESHOLD ? 400 : time);
+    inter = setInterval(() => this.exec(), time < THRESHOLD ? THRESHOLD : time);
   }
 
   exec() {
